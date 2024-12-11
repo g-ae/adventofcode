@@ -2,6 +2,7 @@ const input = require("fs").readFileSync("./data.txt").toString();
 
 let data = {}
 /*
+data type :
 {
   '8': 1
 }
@@ -10,7 +11,7 @@ input.split(' ').forEach(v => addToDict(data,v))
 
 console.log(data)
 
-//console.time("Day11 Task2")
+console.time("Day11 Task2")
 
 function blink() {
   /*
@@ -42,9 +43,9 @@ for (i = 0; i < 75; i++) {
     console.log("Current : ",i)
     blink()
 }
-/*
+
 console.clear()
-console.timeEnd("Day11 Task2")*/
+console.timeEnd("Day11 Task2")
 var count = 0
 
 Object.keys(data).forEach(x => {
