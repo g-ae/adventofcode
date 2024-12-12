@@ -35,43 +35,46 @@ def opponentHandToSame(hand: str):
     """
     return chr(ord((hand)[0]) + 23)
 
-# Task 1
+# Only execute if meant to
+if (__name__ == "__main__"):
+    f = open("data.txt", 'r')
+    data = f.read().split('\n')
 
-score = 0
-f = open("data.txt", 'r')
-data = f.read().split('\n')
-for lin in data:
-    [opp, me] = lin.split(' ')
-    win = False
+    # Task 1
+    score = 0
+    
+    for lin in data:
+        [opp, me] = lin.split(' ')
+        win = False
 
-    if opponentHandToSame(opp) == me:
-        win = None
-    elif opponentHandToSame(opp) == "X" and me == "Y":
-        win = True
-    elif opponentHandToSame(opp) == "Y" and me == "Z":
-        win = True
-    elif opponentHandToSame(opp) == "Z" and me == "X":
-        win = True
+        if opponentHandToSame(opp) == me:
+            win = None
+        elif opponentHandToSame(opp) == "X" and me == "Y":
+            win = True
+        elif opponentHandToSame(opp) == "Y" and me == "Z":
+            win = True
+        elif opponentHandToSame(opp) == "Z" and me == "X":
+            win = True
 
-    score += calcScore(me, win)
+        score += calcScore(me, win)
 
-print("Task 1 " + str(score))
+    print("Task 1 " + str(score))
 
-# Task 2
+    # Task 2
 
-score = 0
-for lin in data:
-    [opp, me] = lin.split(' ')
+    score = 0
+    for lin in data:
+        [opp, me] = lin.split(' ')
 
-    if me == "X":   # Lose
-        play = ord((opponentHandToSame(opp))[0]) - 1
-        if (play == 87): play = 90
-        score += calcScore(chr(play), False)
-    elif me == "Y": # Draw
-        score += calcScore(opponentHandToSame(opp), None)
-    elif me == "Z": # Win
-        play = ord((opponentHandToSame(opp))[0]) + 1
-        if (play == 91): play = 88
-        score += calcScore(chr(play), True)
+        if me == "X":   # Lose
+            play = ord((opponentHandToSame(opp))[0]) - 1
+            if (play == 87): play = 90
+            score += calcScore(chr(play), False)
+        elif me == "Y": # Draw
+            score += calcScore(opponentHandToSame(opp), None)
+        elif me == "Z": # Win
+            play = ord((opponentHandToSame(opp))[0]) + 1
+            if (play == 91): play = 88
+            score += calcScore(chr(play), True)
 
-print("Task 2 " + str(score))
+    print("Task 2 " + str(score))
