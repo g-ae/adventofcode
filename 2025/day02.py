@@ -1,6 +1,3 @@
-from calendar import c
-
-
 lines = []
 with open("data.txt") as f:
     lines = f.readlines()
